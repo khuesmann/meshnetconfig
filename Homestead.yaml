@@ -1,0 +1,40 @@
+---
+ip: "192.168.56.56"
+memory: 2048
+cpus: 1
+hostname: meshnetconf
+name: meshnetconf
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: "./"
+      to: "/var/www/meshnetconf"
+    - map: "../MeshNetView"
+      to: "/var/www/meshnetview"
+
+sites:
+    - map: meshnetconf.app
+      to: "/var/www/meshnetconf/public"
+    - map: meshnetview.app
+      to: "/var/www/meshnetview/build"
+
+databases:
+    - meshnetconf
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
